@@ -1,0 +1,17 @@
+.pytest_cache
+
+.mypy_cache
+
+.vscode
+
+__pycache__
+
+Notebook_tests/
+
+*.pyc
+
+dist/
+
+build/
+
+usefulpython.egg-info
