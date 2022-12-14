@@ -49,20 +49,28 @@ RELEASE NOTES:
    Seperated from main Usefulpython system.
 '''
 # CAS engine
-# - sets
-# - Display
-# - GUI Box for input?
-# - Geometry
-# -- Display
-# -- Solver?
-# - Numeric Types
-# -- Basenum
-# -- Quaternion
-# -- Unit Type (enums?)
-# -- Logic and set based definition of type? Quaternions = R(i, j, k), Matrix = R(m*n)?
-# -- Boolean?
-# -- Vector, Matrix, Tensor?
-# -- Tensor-based systems of equations?
+# :  Structure pattern based definition of identities?
+# :- sets
+# :- Display
+# :- GUI Box for input?
+# :- Geometry
+# :  :- Display
+# :- Solver?
+# :- Numeric Types
+# :  :  Data-class like decorator for class definition?
+# :  :  Basenum (Display for number type, not for actual storage)
+# :  :  i = Number(CASvar(n), rules={n**2=-1})? 
+# :  :  How does it infer rest of rules?
+# :  :  Logic and set based definition of type? Quaternions = R(i, j, k), Matrix = R(m*n)?
+# :  :- Quaternion 
+# :  :  :  How does it infer orthonormalcy of ijk?
+# :  :- Unit Type 
+# :  :  : enums?
+# :  :  :  Subclass of Numeric Type?
+# :  :- Boolean arithmetic definition
+# :  :  :  BoolType = (t, f, t+t = t, t+f = t, f+f = t, ~f = t, tt = t, tf = f, ff = f)?
+# :- Vector, Matrix, Tensor?
+# :  : Tensor-based systems of equations?
 # Constants?
 
 
