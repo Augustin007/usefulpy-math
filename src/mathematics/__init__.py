@@ -50,6 +50,9 @@ RELEASE NOTES:
 '''
 # CAS engine
 # :  Structure pattern based definition of identities?
+# :  :  Rule definition. 
+# :  :  Global Rules, Function-tied rules, Numeric rules, and system rules. 
+# :  Dynamic raising cos**2(x) = cos(x)**2
 # :- sets
 # :- Display
 # :- GUI Box for input?
@@ -65,9 +68,9 @@ RELEASE NOTES:
 # :  :- Quaternion 
 # :  :  :  How does it infer orthonormalcy of ijk?
 # :  :- Unit Type 
-# :  :  : enums?
+# :  :  :  enums?
 # :  :  :  Subclass of Numeric Type?
-# :  :- Boolean arithmetic definition
+# :  :- Boolean arithmetic definition?
 # :  :  :  BoolType = (t, f, t+t = t, t+f = t, f+f = t, ~f = t, tt = t, tf = f, ff = f)?
 # :- Vector, Matrix, Tensor?
 # :  : Tensor-based systems of equations?
