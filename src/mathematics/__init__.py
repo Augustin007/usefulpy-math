@@ -32,6 +32,7 @@ RELEASE NOTES:
    More bugfixing, some more functions. Efficiency increased
 1
  1.0
+# :-
   Version 1.0.0:
    Entirety of folder restructured. Much improved use of mathfuncs. Expression
    check has taken the place of eq and algebraic solver. Basic CAS implemented
@@ -77,4 +78,82 @@ RELEASE NOTES:
 # Constants?
 
 
+# Arithmetic Algebra
+# :-- Symbol
+# :-- Add
+# :-- Mul
+# :-- Pow
+# :-- Factor
+# :-- Polynomial
+# HyperOperations
+# :-- Tetration
+# Functional Algebra
+# :-- FunctionType
+# :   :-- Explicit
+# :   :-- Implicit
+# :-- trig
+# :-- log
+# Calculus
+# :-- partial
+# :-- indefinite
+# :-- Approx
+# Numbers
+# :-- Numberic
+# :-- Baseview
+# :-- Quaternion
+# :-- Unit Type
+# :-- Boolean type
+# DiffEq
+# :-- Laplace
+# :-- Series
+# :   :-- Taylor
+# :   :-- Generating Functions
+# :-- Fourier
+# :-- ODE
+# :   :-- Series
+# :-- PDE
+# Discrete
+# :-- prod
+# :-- sum
+# Logic
+# :-- in
+# :-- for
+# :-- and
+# :-- or
+# Sets
+# :-- Self-Refering (...)
+# :-- Sets
+# System
+# :-- Vector, Matrix, Tensor
+# Geometry
+# :-- System
+# Solver
+# :-- Equalities
+# :-- Inequalities
+# :-- Expresions
+# :-- System
+# :-- Symplify
+# :-- HyperSymplify
+# API
+# :-- GUI
+# :   :-- Plotting
+# :   :-- Input
+# :   :-- Display
+# :   :-- Geometry
+# :-- Unify
+# :-- Calling
+# :-- Printing
+# :-- IDE
+# Utils
+# :-- Sorter
+# :-- Random
+# :-- cache
+# :-- Errors
+# :-- CasBase
+# :-- Rules
+# :-- Alphabets
+# :-- Calldef?
+# __init__
+# __main__
+# abc
 # C/C++?
