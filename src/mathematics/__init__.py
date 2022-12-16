@@ -32,7 +32,6 @@ RELEASE NOTES:
    More bugfixing, some more functions. Efficiency increased
 1
  1.0
-# :-
   Version 1.0.0:
    Entirety of folder restructured. Much improved use of mathfuncs. Expression
    check has taken the place of eq and algebraic solver. Basic CAS implemented
@@ -85,6 +84,7 @@ RELEASE NOTES:
 # :-- Pow
 # :-- Factor
 # :-- Polynomial
+# :-- Parameters?
 # HyperOperations
 # :-- Tetration
 # Functional Algebra
@@ -94,8 +94,13 @@ RELEASE NOTES:
 # :-- trig
 # :-- log
 # Calculus
+# :-- Limit
 # :-- partial
 # :-- indefinite
+# :-- Line integral
+# :-- Jacobian
+# :-- extrema
+# :-- lagrange
 # :-- Approx
 # Numbers
 # :-- Numberic
@@ -152,8 +157,10 @@ RELEASE NOTES:
 # :-- CasBase
 # :-- Rules
 # :-- Alphabets
-# :-- Calldef?
+# :-- Calldef? (Define things via calling, so f(x)=x+1, with Explicit(f);f(x)=x+1)
 # __init__
 # __main__
 # abc
+
+
 # C/C++?
