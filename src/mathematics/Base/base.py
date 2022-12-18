@@ -50,3 +50,8 @@ class base:
         if self.exact:
             return str(self.value)
         return str(self)
+
+class _arithmetic:
+    pass
+
+# from ..Algebra.add import add # ... etc, at the end to avoid circular import.
