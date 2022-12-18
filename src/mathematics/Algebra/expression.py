@@ -1,10 +1,10 @@
-from ..Base.base import base
+from ..Base.base import base, _arithmetic
 
-class expression(base):
+class expression(base, _arithmetic):
     pass
 
-class commutative(expression):
+class commutative(expression, tuple):
     pass
 
-class non_commutative(expression):
+class nonCommutative(expression):
     pass
