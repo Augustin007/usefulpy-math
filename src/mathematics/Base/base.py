@@ -10,12 +10,12 @@ from . import rules
 class base:
     exact: bool
     value: int
-    subrules: tuple
+    subrules: rules.ruleGroup
     var: tuple
     fn: set
     evaluation: types.FunctionType
     system: types.FunctionType
-    classRules: rules.rule
+    classRules: rules.ruleGroup
 
     def __repr__(self, /):
         return f'CAS[{repr(str(self))}]'
@@ -33,17 +33,15 @@ class base:
         pass
 
     def applyRules(self, /):
-        for rule in self.subrules:
-            test = rule.apply(self)
-            if test:
-                return test
-        test = self.classRules.apply(self)
-        if test:
+        test = self.subrules.apply(self)
+        if test is not None:
             return test
-        for rule in self.system().globalrules:
-            test = rule.apply(self)
-            if test:
-                return test
+        test = self.classRules.apply(self)
+        if test is not None:
+            return test
+        test = self.system().globalRules.apply(self)
+        if test is not None:
+            return test
         return self
 
     def evalstr(self, /)->str:
