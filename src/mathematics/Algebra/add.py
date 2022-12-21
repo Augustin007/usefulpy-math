@@ -1,4 +1,4 @@
-from expression import commutative
+from .expression import commutative
 
 class add(commutative):
     def __new__(cls, name, *args):
