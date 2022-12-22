@@ -50,6 +50,10 @@ class base:
         return str(self)
 
 class _arithmetic:
-    pass
+    def __add__(self, other):
+        return add(self, other)
+    
+    def __radd__(self, other):
+        return add(other, self)
 
-# from ..Algebra.add import add # ... etc, at the end to avoid circular import.
+from ..Algebra.add import add # ... etc, at the end to avoid circular import.
