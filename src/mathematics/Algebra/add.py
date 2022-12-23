@@ -1,5 +1,6 @@
 from .expression import commutative
 from ..Base.rules import rule, ruleGroup
+
 class add(commutative):
     def __new__(cls, name, *args):
         self = tuple.__new__(cls, name, args)
