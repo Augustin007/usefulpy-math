@@ -55,5 +55,12 @@ class _arithmetic:
     
     def __radd__(self, other):
         return add(other, self)
+    
+    def __mul__(self, other):
+        return mul(self, other)
+    
+    def __rmul(self, other):
+        return mul(other, self)
 
 from ..Algebra.add import add # ... etc, at the end to avoid circular import.
+from ..Algebra.mul import mul
