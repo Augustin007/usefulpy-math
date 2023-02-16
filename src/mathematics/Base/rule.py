@@ -1,0 +1,2 @@
+class pattern(tuple):
+    pass
