@@ -160,15 +160,3 @@ class function(CAS):
         _description_
     '''
     pass
-
-if True:
-#if __name__ == '__main__':
-    exists = symbol('exists', OrderedDict(a=0), fstring =  '∃%s', latex_fstring = '\\exists{%s}')
-    implies = symbol('implies', OrderedDict(a=0,b=0), fstring = '%s⇒%s', latex_fstring = '{%s\\implies{%s}}')
-    land = symbol('land', OrderedDict(a=0,b=0), fstring='%s&%s', latex_fstring='{%s}\\land{%s}')
-    commutative = pattern((symbol['A', 'B'], symbol['B', 'A']))
-    symmetric = pattern((exists('A'), symbol['A', 'A']))
-    transitive = pattern((land(symbol['A', 'B'], symbol['B', 'C']), symbol['A', 'C']))
-    associative = pattern((symbol['A', symbol['B', 'C']], symbol[symbol['A', 'B'], 'C']))
-    equality = symbol('equals',OrderedDict(a=0,b=0), fstring = '%s=%s', latex_fstring='{%s}={%s}', rules = (commutative, symmetric, transitive))
-    addition = symbol('addition', OrderedDict(terms=1), fstring = '{chr(43).join(map(str, self.terms))}', latex_fstring = '{chr(43).join(self.terms)}', rules = (commutative, associative))
