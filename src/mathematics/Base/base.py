@@ -1,17 +1,17 @@
 from abc import abstractmethod
+import functools
 import types
 from numbers import Number
 from collections import OrderedDict
 import inspect
 from .rule import pattern
+from copy import deepcopy
 
 def lazy_fstring(string):
     globals_ = inspect.currentframe().f_back.f_globals.copy()
     locals_ = inspect.currentframe().f_back.f_locals.copy()
     return eval(f'f\'{string}\'', globals_, locals_)
 
-# inspect.currentframe().f_back.f_globals.copy()
-# inspect.currentframe().f_back.f_locals.copy()
 def CAS_new(cls, *args, **kwargs):
     self = super(CAS, cls).__new__(cls)
     self.args = args
@@ -19,43 +19,24 @@ def CAS_new(cls, *args, **kwargs):
     self = self.initialize(*args, **kwargs)    
     return self
 
-def validate(data, kwdata, against):
-    index=0
-    for individual in against:
-        match against[individual]:
-            case 0:
-                if not index<len(data) and individual not in kwdata:
-                    return False
-                else:
-                    index+=1
-            case 1:
-                index = len(data)
-            case 2:
-                if individual not in kwdata:
-                    return False
-            case 4:
-                pass
-    return index==len(data)
-
-def arguments_test(arguments):
-    n=0
-    for value in arguments.values():
-        if type(value) is not int:
-            return False
-        if value>3:
-            return False
-        if n>0: 
-            if (n%2) and value<=n:
-                return False
-            elif value<n:
-                return False
-        if value<0:
-            return False
-        if value<0:
-            return False
-        n=value
-    return True
-
+def unpack_dataclass(data):
+    lstr = []
+    assign_statements = []
+    for key in data:
+        if data[key] in (0, 2):
+            lstr.append(key)
+        elif data[key]==1:
+            lstr.append('*'+key)
+        elif data[key]==3:
+            lstr.append('**'+key) # flag for locals and parent?
+        else:
+            raise ValueError(f'Invalid Argument Type: {data[key]}')
+        assign_statements.append('   self.'+key + '=' + key)
+    inputcombine = ', '.join(lstr)
+    inputdecode = '\n'.join(assign_statements)
+    grab = {}
+    exec(f'def __new__(cls, {inputcombine}):\n   self=CAS.__new__(cls, {inputcombine})\n{inputdecode}\n   return self', globals(),grab)
+    return grab['__new__']
 
 class CAS:
     exact: bool
@@ -63,9 +44,6 @@ class CAS:
     locals: list
     _globals: list = []
     def __new__(cls, *args, parent = None, locals = None, **kwargs):
-        if hasattr(cls, 'arguments'):
-            if not validate(args, kwargs, cls.arguments):
-                raise ValueError('Invalid arguments for %s: %s, %s'%(cls.arguments, args, kwargs))
         self = CAS_new(cls, *args, **kwargs)
         if locals is None:
             locals = []
@@ -81,6 +59,8 @@ class CAS:
         return self._globals
 
     def __str__(self):
+        if not hasattr(self, 'fstring'):
+            return str((self.args, self.kwargs))
         try:
             temp = self.fstring%self.args
         except Exception:
@@ -139,9 +119,9 @@ class symbol(type):
             kwargs['initialize'] =lambda a, *b, **c: a
         if '__doc__' not in kwargs:
             kwargs['__doc__'] = ''
-        if not arguments_test(arguments):
-            raise ValueError('invalid argument selection')
-        kwargs['arguments'] = arguments
+        if '__new__' not in kwargs:
+            kwargs['__new__'] = unpack_dataclass(arguments)
+            #kwargs['__new__'] = functools.wraps(kwargs['_assign'])(CAS.__new__)
         #parser, OrderOfOperations
         self = type.__new__(cls, name, (CAS,), kwargs)
         return self
@@ -181,7 +161,8 @@ class function(CAS):
     '''
     pass
 
-if __name__ == '__main__':
+if True:
+#if __name__ == '__main__':
     exists = symbol('exists', OrderedDict(a=0), fstring =  '∃%s', latex_fstring = '\\exists{%s}')
     implies = symbol('implies', OrderedDict(a=0,b=0), fstring = '%s⇒%s', latex_fstring = '{%s\\implies{%s}}')
     land = symbol('land', OrderedDict(a=0,b=0), fstring='%s&%s', latex_fstring='{%s}\\land{%s}')
@@ -190,4 +171,4 @@ if __name__ == '__main__':
     transitive = pattern((land(symbol['A', 'B'], symbol['B', 'C']), symbol['A', 'C']))
     associative = pattern((symbol['A', symbol['B', 'C']], symbol[symbol['A', 'B'], 'C']))
     equality = symbol('equals',OrderedDict(a=0,b=0), fstring = '%s=%s', latex_fstring='{%s}={%s}', rules = (commutative, symmetric, transitive))
-    addition = symbol('addition', OrderedDict(terms=1), fstring = '{chr(43).join(self.terms)}', latex_fstring = '{chr(43).join(self.terms)}', rules = (commutative, associative))
+    addition = symbol('addition', OrderedDict(terms=1), fstring = '{chr(43).join(map(str, self.terms))}', latex_fstring = '{chr(43).join(self.terms)}', rules = (commutative, associative))
