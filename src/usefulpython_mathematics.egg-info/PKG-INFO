@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: usefulpython-mathematics
+Version: 0.0.0
+Summary: Mathematical tools for Usefulpython.
+Author: Augustin Garcia
+License: GNU AFFERO GENERAL PUBLIC LICENSE
+Platform: unix
+Platform: linux
+Platform: osx
+Platform: cygwin
+Platform: win32
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Provides-Extra: testing
+License-File: LICENSE

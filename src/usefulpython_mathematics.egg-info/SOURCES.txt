@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+src/mathematics/__init__.py
+src/mathematics/__main__.py
+src/mathematics/py.typed
+src/usefulpython_mathematics.egg-info/PKG-INFO
+src/usefulpython_mathematics.egg-info/SOURCES.txt
+src/usefulpython_mathematics.egg-info/dependency_links.txt
+src/usefulpython_mathematics.egg-info/not-zip-safe
+src/usefulpython_mathematics.egg-info/requires.txt
+src/usefulpython_mathematics.egg-info/top_level.txt
