@@ -16,7 +16,7 @@ def CAS_new(cls, *args, **kwargs):
     self = super(CAS, cls).__new__(cls)
     self.args = args
     self.kwargs = kwargs
-    self = self.initialize(*args, **kwargs)    
+    self.__init__(*args, **kwargs)
     return self
 
 def unpack_dataclass(data):
@@ -115,8 +115,8 @@ class symbol(type):
         documentation : str
             documentation of instance.
         ''' # Maybe have it define a new type? Order of operations (or is that in parsing, I guess, nesting gives us order here, that's notational?) Unicode symbol is for... what, exactly?
-        if 'initialize' not in kwargs:
-            kwargs['initialize'] =lambda a, *b, **c: a
+        if '__init__' not in kwargs:
+            kwargs['__init__'] =lambda a, *b, **c: ...
         if '__doc__' not in kwargs:
             kwargs['__doc__'] = ''
         if '__new__' not in kwargs:
