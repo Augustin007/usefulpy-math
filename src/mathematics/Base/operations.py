@@ -17,5 +17,7 @@ zfcset = symbol('zfcset', OrderedDict(a=2))
 # dual_numbers = number.create('dual numbers', 'a+bε').a_in(R).b_in(R).ε_ni('ε**2==0 & ε!=0')
 #other sets
 #type theory? zfcset
+# equals?
+# move operations to base
 
 
