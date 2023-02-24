@@ -1,11 +1,8 @@
 from abc import abstractmethod
-import functools
 import types
 from numbers import Number
 from collections import OrderedDict
 import inspect
-from .rule import pattern
-from copy import deepcopy
 
 def lazy_fstring(string):
     globals_ = inspect.currentframe().f_back.f_globals.copy()
@@ -32,7 +29,7 @@ def unpack_dataclass(data):
         else:
             raise ValueError(f'Invalid Argument Type: {data[key]}')
         assign_statements.append('   self.'+key + '=' + key)
-    inputcombine = ', '.join(lstr)
+    inputcombine = ','.join(lstr)
     inputdecode = '\n'.join(assign_statements)
     grab = {}
     exec(f'def __new__(cls, {inputcombine}):\n   self=CAS.__new__(cls, {inputcombine})\n{inputdecode}\n   return self', globals(),grab)
