@@ -10,7 +10,7 @@ lnot = symbol('lnot', OrderedDict(a=0))
 lni = symbol('lni', OrderedDict(a=0,b=0))
 lin = symbol('lin', OrderedDict(a=0, b=0))
 #lor, implimented as a functional generic combination of land and lnot? along with lnand, lnor, lxand, and lxor.
-zfcset = symbol('zfcset', OrderedDict(a=2))
+zfcset = symbol('zfcset', OrderedDict(a=1), fstring='{set(self.a)}!r')
 #zfcset definition?
 # typeinferrence
 # Generic number type generated from a subset given certain qualities
@@ -25,3 +25,5 @@ associative = pattern((symbol['A', symbol['B', 'C']], symbol[symbol['A', 'B'], '
 
 equality = symbol('equals',OrderedDict(a=0,b=0), fstring = '%s=%s', latex_fstring='{%s}={%s}', rules = (commutative, symmetric, transitive))
 addition = symbol('addition', OrderedDict(terms=1), fstring = '{chr(43).join(self.terms)}', latex_fstring = '{chr(43).join(self.terms)}', rules = (commutative, associative))
+product_noncommutative = symbol('product_noncommutative',OrderedDict(a=0,b=0), fstring='{a}*{b}', latex_fstring = '{a}{b}')
+product_commutative = symbol('product_commutative',OrderedDict(a=1), fstring='*', latex_fstring = '{a}{b}')
