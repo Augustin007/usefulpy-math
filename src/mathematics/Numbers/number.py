@@ -1,16 +1,8 @@
-from ..Base.base import base, _arithmetic
-from ..Base.rules import rule, ruleGroup
+from numbers import Number as _Number, Complex as _Complex
 
-class number:
-    pass
 
-def NumberType(name: str, rules: ruleGroup):
-    type(name, (number,), general|data(rules))
+class Number(_Number):
+    ...
 
-def data(rules):
-    return {}
-
-def __str__():
-    return ""
-
-general =  (__str__,)
+class Complex(_Complex):
+    ...
